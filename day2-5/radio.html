@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Radio</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<form action="post.php" method="post">
+		<p>
+			<label>请选择性别：</label>
+			<input type="radio" name="gender" value="male">男
+			<input type="radio" name="gender" value="female" checked="checked">女
+		</p>
+		<button type="submit">提交</button>
+		<button id="choose-male" type="button">选中男</button>
+		<button id="choose-female" type="button">选中女</button>
+		<button id="choose-clear" type="button">清空选项</button>
+	</form>
+	<script type="text/javascript">
+		var genders = document.getElementsByName('gender');
+		console.log(genders);
+		
+		//choose-male的onclick事件
+		document.getElementById('choose-male').onclick = function() {
+			for (var g in genders) {
+				var cgender = genders[g];
+				if (cgender.value == 'male') {
+					cgender.checked = true;
+					return;
+				}
+			}
+		}
+
+		//choose-female的onclick事件
+		document.getElementById('choose-female').onclick = function() {
+			for (var g in genders) {
+				var cgender = genders[g];
+				if (cgender.value == 'female') {
+					cgender.checked = true;
+					return ;
+				}
+			}
+		}
+		//choose-clear的onclick事件
+		document.getElementById('choose-clear').onclick = function() {
+			for (var g in genders) {
+				var cgender = genders[g];
+				cgender.checked = false;
+			}
+		}
+	</script>
+</body>
+</html>

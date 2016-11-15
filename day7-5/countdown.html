@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>倒计时</title>
+</head>
+<body>
+	<div class="countdown-block">还有<b class="countdown">10</b>秒跳转到百度</div>
+</body>
+	<script type="text/javascript">
+		var Counterdown = function(cblock, cclass, ctime){
+			this.cblock = cblock;
+			this.cclass = cclass;
+			this.ctime = ctime;
+		}
+		Counterdown.prototype.init = function() {
+			var cclass = this.cclass;
+			var cblock = this.cblock;
+			console.log("." + this.cclass);
+			var timer = parseInt(document.querySelector("." + cclass).innerHTML);
+			console.log(timer);
+			setInterval(function(){
+				if (timer >= 1) {
+					timer--;
+					document.querySelector("." + cclass).innerHTML = timer;
+					console.log(document.querySelector("." + cclass));
+				} else {
+					document.querySelector("." + cblock).innerHTML = "正在跳转...";
+					window.location.href= "http://www.baidu.com";
+				}
+				
+			}, this.ctime);
+		}
+		var cdObj = new Counterdown("countdown-block", "countdown", 1000);
+		cdObj.init();
+		/*
+		var timer = parseInt(document.querySelector(".countdown").innerHTML);
+		setInterval(function(){
+			if (timer >= 1) {
+				timer--;
+				document.querySelector(".countdown").innerHTML = timer;
+			} else {
+				document.querySelector(".countdown-block").innerHTML = "正在跳转...";
+				window.location.href= "http://www.baidu.com";
+			}
+			
+		}, 1000);
+		*/
+	</script>
+</html>

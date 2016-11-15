@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>注册</title>
+	<script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+	<style type="text/css">
+		.warn {
+			background-color: #ccc;
+		}
+		.red {
+			color: red;
+		}
+		.green {
+			color: green;
+		}
+	</style>
+</head>
+<body>
+	<form id="reg-form">
+	<div>
+		<label>用户名：</label><input id="username" type="text" name="username">
+		<div class="warn"></div>
+	</div>
+	<div>
+		<label>密码：</label><input id="password" type="password" name="password">
+		<div class="warn"></div>
+	</div>
+	<div>
+		<label>重复密码：</label><input id="verify" type="password" name="verify">
+		<div class="warn"></div>
+	</div>
+	<div>
+		<label>邮箱：</label><input id="email" type="text" name="email">
+		<div class="warn"></div>
+	</div>
+	<div>
+		<button id="reg" type="button">注册</button>
+	</div>
+	</form>
+	<script type="text/javascript">
+		//用户名的验证
+		$("#username").on("blur", function(){
+			check_username();
+		});
+		function check_username() {
+			var username = $("#username").val();
+			//如果小于3位，报错
+			if (username.length < 3) {
+				$('#username').next(".warn").html("用户名不能少于3位");
+				$("#username").next(".warn").removeClass("green").addClass("red");
+				return false;
+			}
+			$.getJSON("checkuser.php", {username: username}, function(data){
+				console.log(data.message);
+				if (data.status == 200) {
+					//CSS样式去掉红色
+					$("#username").next(".warn").removeClass("red").addClass("green");
+				} else {
+					//CSS加上红色
+					$("#username").next(".warn").removeClass("green").addClass("red");
+				}
+				$("#username").next(".warn").html(data.message);
+			});
+			return true;
+		}
+
+		//判断密码
+		$("#password").on("blur", function(){
+			check_password();
+		});
+		function check_password(){
+			var val = $("#password").val();
+			if (val.length < 6) {
+				$("#password").next(".warn").html("密码不能少于6位");
+				return false;
+			}
+			return true;
+		}
+		//判断重复密码
+		$("#verify").on("blur", function(){
+			verify_password();
+		});
+		function verify_password() {
+			var val = $("#verify").val();
+			if (val.length < 6) {
+				$("#verify").next(".warn").html("确认密码不能少于6位");
+				return false;
+			}
+			if (val != $("#password").val()) {
+				$("#verify").next(".warn").html("输入的两次密码不一致");
+				return false;
+			}
+			return true;
+		}
+		//邮箱验证
+		$("#email").on("blur", function(){
+			check_email();
+		});
+		function check_email(){
+			var val = $("#email").val();
+			var regex = /^\w{3,20}@[a-zA-Z0-9]+\.(com|net|org|cn)$/;
+			if (regex.test(val) === false) {
+				$("#email").next(".warn").html("邮箱格式不正确");
+				return false;
+			}
+			return true;
+		}
+		//提交
+		$("#reg").on("click", function(){
+			if (check_username() && check_password && verify_password() && check_email()) {
+				$.post("reg.php", $("#reg-form").serialize(), function(data){
+					console.log(data);
+				});
+			}
+		});
+	</script>
+</body>
+</html>

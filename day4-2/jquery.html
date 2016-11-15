@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery例子</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="jquery.min.js"></script>
+</head>
+<body>
+	<form action="" method="post">
+		<div class="input-block">
+			<label>用户名：</label>
+			<input id="uid" type="text" name="username">
+		</div>
+		<div class="input-block">
+			<label>密码</label>
+			<input id="pid" type="password" name="password">
+		</div>
+		<div class="input-block">
+			<button type="submit">提交</button>
+		</div>
+
+	</form>
+	<p>点我点我，点我是傻帽。</p>
+	<p>点我点我，不点我才是傻帽。</p>
+	<script type="text/javascript">
+		// $("form").on("submit", false);
+		// jQuery("form").on("submit", false);
+		$("form").on("submit", function(){
+			var username = $("#uid").val();
+			var password = $("#pid").val();
+			if (username.length < 6) {
+				alert("请输入用户名");
+				return false;
+			}
+			if (password.length < 6) {
+				alert("密码长度不能小于6");
+				return false;
+			}
+			// alert("禁止提交！！");
+			$(this).submit();
+			return false;
+		});
+		// $("p").on("click", function(){
+		// 	alert( $(this).text() );
+		// });
+	</script>
+</body>
+</html>

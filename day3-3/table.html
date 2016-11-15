@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Table</title>
+	<meta charset="utf-8">
+	<style>
+		table {
+			background-color: rgba(153, 255, 0, 0.7);
+			width: 100%;
+			border: 1px solid rgba(20, 40, 60, 0.6);
+			/*border-collapse: collapse;*/
+			border-spacing: 20px 10px;
+			caption-side: left;
+			empty-cells: hide;
+		}
+		table td {
+			border: 1px solid rgba(20, 40, 60, 0.6);
+			height: 30px;
+		}
+		table caption {
+			font-size: x-large;
+		}
+		.itable {
+			width: 800px;
+			margin: 0px auto;	
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<section class="itable">
+			<div>
+				<form>
+					请输入书名：<input type="" name=""><button>搜索</button>
+				</form>
+			</div>
+			<table>
+				<thead>
+					<tr>
+						<td>姓名</td>
+						<td>手机号</td>
+						<td>家庭地址</td>
+					</tr>
+				</thead>
+				<tbody>
+					<caption>金庸作品集</caption>
+					<tr>
+						<td>笑傲江湖</td>
+						<td>倚天屠龙记</td>
+						<td>神雕侠侣</td>
+					</tr>
+					<tr>
+						<td>雪山飞狐</td>
+						<td>射雕英雄传</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>鹿鼎记</td>
+						<td>鸳鸯刀</td>
+						<td>碧血剑</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td>姓名</td>
+						<td>手机号</td>
+						<td>家庭地址</td>
+					</tr>
+				</tfoot>
+			</table>
+		</section>
+	</main>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>XMLHttpRequest</title>
+</head>
+<body>
+	<button id="ajax-1" type="button">加载</button>
+	<div id="content-1"></div>
+	<script type="text/javascript">
+		document.getElementById("ajax-1").onclick = function() {
+			var xmlhttp;
+			if (window.XMLHttpRequest) {
+				xmlhttp = new XMLHttpRequest();
+			} else {
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			console.log(xmlhttp);
+			xmlhttp.open("GET", "hello.txt", true);
+			xmlhttp.send();
+			console.log(xmlhttp);
+			setTimeout(function(){
+				var content = xmlhttp.responseText;
+				document.getElementById("content-1").innerHTML = content;
+			}, 1000)
+			
+		}
+		
+	</script>
+</body>
+</html>

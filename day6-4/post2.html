@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AJAX POST请求</title>
+	<script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+</head>
+<body>
+	<div>
+		<form id="form-1">
+		<label>请输入数字：</label><input id="input-1" type="text" name="n">
+		<input type="text" name="username">
+		<input type="password" name="password">
+		</form>
+	</div>
+	<div id="content-1"></div>
+
+	<script type="text/javascript">
+		/*
+		$("#input-1").keyup(function(){
+			console.log(this);
+			$.ajax({
+			   type: "POST",
+			   url: "post.php",
+			   data: "n=" + $(this).val(),
+			   // data: "n=" + this.value,
+			   beforeSend: function(){
+			   	$("#content-1").html('<img src="loading.gif">');
+			   },
+			   success: function(data){
+			     $("#content-1").html(data);
+			   },
+			   error: function() {
+			   	$("#content-1").html("运算失败，请稍后重试");
+			   }
+			});
+		});
+		*/
+		$("#input-1").on("keyup", function(){
+			console.log($("#form-1").serialize());
+			$.post("post.php", $("#form-1").serialize(), function(data){
+				$("#content-1").html(data);
+			});
+		});
+	</script>
+</body>
+</html>

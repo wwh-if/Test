@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Zol底部快速登录工具条</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		body {
+			font-family: "Microsoft Yahei", "宋体";
+			font-size: 14px;
+		}
+		a {
+			text-decoration: none;
+		}
+		/*登录工具条*/
+		.login-bar {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 65px;
+			border: 1px solid red;
+		}
+		.login-bar .login-bar-ico, .login-bar .login-bar-close, .login-bar .login-bar-close:hover {
+			background: url('fixed-login-ico.png') no-repeat;
+		}
+		.login-bar .login-bar-ico {
+			width: 90px;
+			height: 90px;
+			/*border: 1px solid green;*/
+			/*background: url('fixed-login-ico.png') no-repeat;*/
+			/*background-position: 0 0;*/
+			position: absolute;
+			top: -76px;
+			left: 220px;
+		}
+		.login-bar .login-bar-close {
+			width: 28px;
+			height: 28px;
+			/*background: url('fixed-login-ico.png') no-repeat -120px 3px;*/
+			background-position: -120px 3px;
+			position: absolute;
+			top: -20px;
+			right: 50%;
+			margin-right: -500px;
+			/*margin: 0 -500px 0 0;*/
+		}
+		.login-bar .login-bar-close:hover {
+			background-position: -165px 3px;
+		}
+		.login-bar .login-bar-inner {
+			width: 100%;
+			height: 65px;
+			background-color: rgba(0, 0, 0, 0.7);
+			padding: 5px;
+		}
+		.wrapper {
+			width: 1000px;
+			margin: 15px auto;
+		}
+		.fast-login-box {
+			width: 470px;
+			height: 32px;
+			display: inline-block;
+			border-right: 1px solid rgba(217, 187, 187, 0.6);
+		}
+		.fast-login-box .fast-login-tip {
+			font-size: 18px;
+			color: #ffffff;
+		}
+		.fast-login-box .fast-login-subtitle {
+			font-size: 14px;
+			color: #ffffff;
+			padding: 0px 15px;
+			background: url('fixed-login-ico.png') no-repeat -215px -61px;
+		}
+		.fast-qq {
+			width: 35px;
+			height: 28px;
+			display: inline-block;
+			background: #2f9be6 url('fixed-login-ico.png') no-repeat -215px -3px;
+			border-radius: 3px;
+			vertical-align: middle;
+			margin: 0px 3px;
+		}
+		.fast-weibo {
+			width: 35px;
+			height: 28px;
+			display: inline-block;
+			background: #f26611 url('fixed-login-ico.png') no-repeat -256px -3px;
+			border-radius: 3px;
+			vertical-align: middle;
+			margin: 0px 3px;
+		}
+		.login-box {
+			width: 410px;
+			height: 32px;
+			display: inline-block;
+			margin-left: 20px;
+			/*box-sizing: content-box;*/
+			border-right: 1px solid rgba(217, 187, 187, 0.6);
+		}
+		.login-box .login-item {
+			display: inline-block;
+		}
+		.login-box .login-item input {
+			/*border: 1px solid rgba(137, 112, 112, 0.7);*/
+			border-radius: 5px;
+			padding: 5px 10px;
+		}
+		.login-box .login-item .login-button {
+			background-color: #2d9be8;
+			color: #ffffff;
+			border: 0;
+			border-radius: 3px;
+			margin-left: 5px;
+			padding: 5px 10px;
+		}
+		.register-box {
+			display: inline-block;
+			margin-left: 10px;
+		}
+		.register-box .register-button {
+			background-color: #85c613;
+			color: #ffffff;
+			border: 0;
+			border-radius: 3px;
+			margin-left: 5px;
+			padding: 7px 22px;
+			font-size: 14px;
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<section class="main-section">
+			<p>正文</p>
+			<p>正文</p>
+			<p>正文</p>
+			<p>正文</p>
+			<p>正文</p>
+			<p>正文</p>
+			<p>正文</p>
+			<p>正文</p>
+			<p>正文</p>
+			<p>正文</p>
+			<p>正文</p>
+			<p>正文</p>
+			<p>正文</p>
+			<p>正文</p>
+			<p>正文</p>
+			<p>正文</p>
+			<p>正文</p>
+			<p>正文</p>
+			<p>正文</p>
+			<p>正文</p>
+			<p>正文</p>
+			<p>正文</p>
+			<p>正文</p>
+			<p>正文</p>
+			<p>正文</p>
+			<p>正文</p>
+			<p>正文</p>
+			<p>正文</p>
+			<p>正文</p>
+		</section>
+		<div id="login-layer" class="login-bar">
+			<span class="login-bar-ico"></span>
+			<span class="login-bar-close"></span>
+			<div class="login-bar-inner">
+				<div class="wrapper">
+					<div class="fast-login-box">
+						<span class="fast-login-tip">快到坛里来，我知道你要看什么！</span>
+						<span class="fast-login-subtitle">快捷登录</span>
+						<a class="fast-qq" href="http://www.qq.com"></a>
+						<a class="fast-weibo" href="http://www.weibo.com"></a>
+					</div>
+					<div class="login-box">
+						<div class="login-item">
+							<input type="text" name="username" placeholder="用户名">
+						</div>
+						<div class="login-item">
+							<input type="password" name="password" placeholder="密码">
+						</div>
+						<div class="login-item">
+							<button class="login-button">登录</button>
+						</div>
+					</div>
+					<div class="register-box">
+						<a class="register-button" href="http://www.kantphp.com">注册</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+</html>

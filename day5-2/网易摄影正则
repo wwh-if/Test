@@ -1,0 +1,8 @@
+<img style="width: auto; height: auto;" class="z-tag data-lazyload-src" alt="1" data-operation="showlightbox" data-photoid="9653355084" data-pictureid="45928080" src="http://img0.ph.126.net/JcMly-NqG5aY6EskoBs1tQ==/6631812135072139314.jpg" onerror="this.src='http://r.ph.126.net/image/default/failpp.gif'">
+
+<img(?:\s\S)+\bsrc=(?:\"|\')(\S+\.(?:jpg|gif|jpeg|png))(?:\"|\')
+
+
+if(preg_match_all("/(src)=([\"|']?)([^ \"'>]+\.(gif|jpg|jpeg|bmp|png))\\2/i", $content, $matches)) {
+				$systeminfo['thumb'] = $matches[3][$auto_thumb_no];
+			}

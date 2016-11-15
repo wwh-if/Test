@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="jquery.cookie.js"></script>
+	<style>
+		.red {
+			background-color: red;
+		}
+		.green {
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+	主题：<button class="theme" type="button" data-color="red">红色</button><button class="theme" type="button" data-color="green">绿色</button>
+	点击红色，背静变红，再次打开页面，或者刷新，还是红色。
+	同样，绿色一样功能。
+	<script type="text/javascript">
+		$("button.theme").on("click", function(){
+			var color = $(this).data("color");
+			changeTheme(color);
+		});
+
+		function changeTheme(color){
+			$("body").removeClass("red green").addClass(color);
+			$.cookie("color", color, {expires:1});
+		}
+		var color = $.cookie("color");
+		if (color) {
+			changeTheme(color);
+		}
+	</script>
+
+</body>
+</html>

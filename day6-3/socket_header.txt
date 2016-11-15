@@ -1,0 +1,11 @@
+HTTP/1.1 200 OK
+Server: nginx/1.2.9
+Date: Wed, 17 Aug 2016 08:51:38 GMT
+Content-Type: application/octet-stream
+Content-Length: 127035
+Last-Modified: Sat, 23 Jul 2016 08:56:40 GMT
+Connection: close
+Content-Disposition: attachment; filename="【BT天堂】【BTtiantang.com】[720p韩版中英字幕]X战警：天启.3GB.torrent"
+Accept-Ranges: none
+Accept-Ranges: bytes
+

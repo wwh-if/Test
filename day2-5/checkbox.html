@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CheckBox</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<form action="post.php" method="post">
+		<h2>你最喜欢的明星是？最多选择3个</h2>		
+		<ul>
+			<li><input type="checkbox" name="mstar[male][]" value="狄龙">狄龙</li>
+			<li><input type="checkbox" name="mstar[male][]" value="狄威">狄威</li>
+			<li><input type="checkbox" name="mstar[male][]" value="刘德华">刘德华</li>
+			<li><input type="checkbox" name="mstar[male][]" value="张学友">张学友</li>
+			<li><input type="checkbox" name="mstar[male][]" value="顾嘉辉">顾嘉辉</li>
+		</ul>
+		<p>
+			<button id="mstar-submit" type="button">提交</button>
+			<button id="mstar-all" type="button">全选</button>
+			<button id="mstart-reverse" type="button">反选</button>
+		</p>
+	</form>
+	<script type="text/javascript">
+		var mstars = document.getElementsByName('mstar[male][]');
+		document.getElementById('mstar-submit').onclick = function() {			
+			//已经选择了checkbox的input个数
+			var count = 0;
+			for (var i in mstars) {
+				console.log(mstars[i]);
+				if (mstars[i].checked == true) {
+					count++;
+				}
+			}
+			if (count < 1) {
+				alert('请选择你喜欢的明星');
+				return;
+			}
+			if (count > 3) {
+				alert('最多能选择3位明星');
+				return;
+			}
+			document.getElementsByTagName('form')[0].submit();
+		}
+		//全选/全清
+		document.getElementById('mstar-all').onclick = function() {
+			console.log(this);
+			//如果是全选，执行全选操作，否则执行全清操作
+			var action = this.innerHTML;
+			if (action == '全选') {
+				this.innerHTML = "全清";
+				for (var i in mstars) {
+					mstars[i].checked = true;
+				}
+			} else {
+				this.innerHTML = "全选";
+				for (var i in mstars) {
+					mstars[i].checked = false;
+				}
+			}
+		}
+		//反选
+		document.getElementById('mstart-reverse').onclick = function() {
+			for (var i in mstars) {
+				// mstars[i].checked = !mstars[i].checked;
+				mstars[i].checked = !mstars[i].checked;
+			}
+		}
+	</script>
+</body>
+</html>

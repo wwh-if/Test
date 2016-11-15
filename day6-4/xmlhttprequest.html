@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>XMLHttpRequest</title>
+</head>
+<body>
+	<button id="ajax-1" type="button">加载</button>
+	<div id="content-1"></div>
+	<script type="text/javascript">
+		document.getElementById("ajax-1").onclick = function() {
+			var xmlhttp;
+			if (window.XMLHttpRequest) {
+				xmlhttp = new XMLHttpRequest();
+			} else {
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			console.log(xmlhttp);
+			// xmlhttp.open("GET", "hello.txt", true);
+			// xmlhttp.open("GET", "http://www.baidu.com", false);
+			xmlhttp.open("GET", "randimg.php", true);
+			xmlhttp.send();
+			console.log(xmlhttp);
+			/* 同步显示代码
+			var content = xmlhttp.responseText;
+			document.getElementById("content-1").innerHTML = content;
+			*/
+			/*
+			*异步显示代码*/
+			xmlhttp.onreadystatechange = function(){
+				if (xmlhttp.readyState == 2) {
+					console.log("已接受");
+					return false;
+				}
+				if (xmlhttp.readyState == 3) {
+					console.log("处理中");
+					return false;
+				}
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					var content = xmlhttp.responseText;
+					document.getElementById("content-1").innerHTML = content;
+				}
+			}
+			
+			
+		}
+		
+	</script>
+</body>
+</html>

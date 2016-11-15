@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Select</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<form action="post.php" method="post">
+		<p>请选择套餐：<select name="package">
+			<option value="">请选择套餐</option>
+			<option value="38">38元套餐</option>
+			<option value="58">58元套餐</option>
+			<option value="88">88元套餐</option>
+		</select></p>
+		<p>测试文本：<input type="text" name="test"></p>
+		<p>测试文本域：<textarea name="intro" rows="5" cols="30">默认文本888</textarea>
+		<p>
+			<button type="submit">提交</button>
+			<button id="package-set-38" type="button">设置38元套餐</button>
+			<button type="reset">重置</button>
+		</p>
+		<input type="hidden" name="phone" value="15800000000">
+	</form>
+	<script type="text/javascript">
+		document.getElementById('package-set-38').onclick = function(){
+			var packageObj = document.getElementsByName('package')[0];
+			console.log(packageObj);
+			packageObj.value = 38;
+		}
+		//作业
+		//加入一个按钮，把textarea的值改为HellO PHP!
+	</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<p>打算发大水</p>
+<b>加粗</b>
+<?php echo "hello world";?>
+<style>
+b {font-size:14px;}
+</style>
+<script type="text/javascript">alert(111); document.getElementById('a').innerHTML = 'aaaa'</script>
+adsfsdf
+
+
+阿斯顿发顺丰的说法是fsd
+阿是大富大贵

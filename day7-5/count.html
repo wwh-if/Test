@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>倒计时练习</title>
+</head>
+<body>
+	<div>还有<b class="timer">10</b>秒就跳转到百度<div>
+	<script type="text/javascript">
+		var timer = document.querySelector(".timer").innerHTML;
+		setInterval(function(){
+			timer--;
+			if (timer > 0) {
+				document.querySelector(".timer").innerHTML = timer;			
+			} else {
+				window.location.href = "http://www.baidu.com";
+			}
+			console.log(timer);
+			console.log('hello world');
+		}, 1000);
+	</script>
+</body>
+</html>

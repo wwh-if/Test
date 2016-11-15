@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>COOKIE</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//设置COOKIE
+		function setCookie(name, value, expire) {
+			var cookieString = "";
+			cookieString += (name + "=" + value);
+			var DateObj = new Date();
+			DateObj.setTime(DateObj.getTime() + expire * 1000);
+			cookieString += (";expires=" + DateObj.toUTCString() + ";path=/");
+			// console.log(cookieString);
+			document.cookie = cookieString;
+		}
+		setCookie("user", 'zhangsan', 60);
+		setCookie("uid", 10001, 60);
+		setCookie("a", "user=123")
+		//获取COOKIE
+		function getCookie(key) {
+			var arr = document.cookie.split(";");
+			console.log(arr);
+			for (var i = 0; i < arr.length; i++) {
+				var iv = arr[i].trim();
+				if (iv.indexOf(key) === 0) {
+					var value = iv.substr(key.length+1);
+					return value;
+				}
+			}
+		}
+		var c = getCookie("user");
+		console.log(c);
+	</script>
+</body>
+</html>

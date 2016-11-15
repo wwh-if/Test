@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Get请求</title>
+	<script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+</head>
+<body>
+	<form id="form-1">
+		<input type="text" name="username">
+		<input type="hidden" name="uid" value="10001">
+		<button id="button-1" type="button">加载</button>
+	</form>
+	<div id="content-1"></div>
+	<script type="text/javascript">
+		var jsona = {"firstName": "洞主", "lastName": "张"}
+		$("#button-1").click(function(){
+			$.get("get.php", $("#form-1").serialize(), function(data){
+				$("#content-1").html(data);
+			});
+		});
+		// $("#button-1").on("click", function(){
+
+		// });
+	</script>
+</body>
+</html>

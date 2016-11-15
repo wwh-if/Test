@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="jquery.min.js"></script>
+</head>
+<body>
+	<ul>
+	    <li class='h1' name='a'>list item 1</li>
+	    <li>list item 2</li>
+	    <li>list item 3</li>
+	    <li>list item 4</li>
+	    <li>list item 5</li>
+	</ul>
+	<div>
+		<input name="apple" />
+		<input name="flower" checked="checked" />
+	</div>
+	<div>
+		<table>
+		  <tr><td>Header 1</td></tr>
+		  <tr><td>Value 1</td></tr>
+		  <tr><td>Value 2</td></tr>
+		</table>
+	</div>
+	<div>
+		<p>Hello World!!!</p>
+		<p>Hello World!!!</p>
+		<p>Hello World!!!</p>
+		<p>Hello World!!!</p>
+	</div>
+	<div>
+		<a href="http://www.baidu.com">百度</a>
+		<a href="http://www.baidu.com">百度</a>
+		<a href="http://www.baidu.com">百度</a>
+	</div>
+	<script type="text/javascript">
+		//以原型的方式，创建一个构造函数，给一个p,li,tr参数，就可以对指定的元素随机变色
+		function RenderRandColor(tag) {
+			this.tag = tag;
+		}
+		RenderRandColor.prototype.render = function() {
+			var liObj = document.getElementsByTagName(this.tag);
+			for (var i = 0; i < liObj.length; i++) {
+				liObj[i].style.backgroundColor = this.randColor();
+			}
+		}
+
+		RenderRandColor.prototype.randColor = function() {
+			var r, g, b, a, rgba;
+			r = parseInt(Math.random() * 256);
+			g = parseInt(Math.random() * 256);
+			b = parseInt(Math.random() * 256);
+			a = Math.random();
+			rgba = "rgba(" + r + ", " + g + ", " + b + ", " + a + ")";
+			return rgba;
+		}
+		var r = new RenderRandColor("li");
+		var t = new RenderRandColor("tr");
+		var p = new RenderRandColor("p");
+		var a = new RenderRandColor("a");
+		setInterval(function(){			
+			r.render();			
+			t.render();
+			p.render();
+			a.render();
+		}, 1000);
+
+	</script>
+</body>
+</html>

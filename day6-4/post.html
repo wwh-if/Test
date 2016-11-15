@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>计算</title>
+</head>
+<body>
+	<div>
+		<label>请输入数字：</label><input id="input-1" type="text">
+	</div>
+	<div id="content-1"></div>
+	<script type="text/javascript">
+		document.getElementById("input-1").onkeyup = function() {
+			var xmlhttp;
+			if (window.XMLHttpRequest) {
+				xmlhttp = new XMLHttpRequest();
+			} else {
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			console.log(xmlhttp);
+			// console.log(this);
+			// return;
+			xmlhttp.open("POST", "post.php", true);
+			xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			var data = "n=" + this.value;
+			xmlhttp.send(data);
+			console.log(xmlhttp);
+			/* 同步显示代码
+			var content = xmlhttp.responseText;
+			document.getElementById("content-1").innerHTML = content;
+			*/
+			/*
+			*异步显示代码*/
+			xmlhttp.onreadystatechange = function(){
+				if (xmlhttp.readyState == 2) {
+					console.log("已接受");
+					return false;
+				}
+				if (xmlhttp.readyState == 3) {
+					console.log("处理中");
+					return false;
+				}
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					var content = xmlhttp.responseText;
+					document.getElementById("content-1").innerHTML = content;
+				}
+			}
+			
+			
+		}
+		
+	</script>
+</body>
+</html>

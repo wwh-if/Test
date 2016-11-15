@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML JSON</title>
+	<script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+</head>
+<body>
+	<button id="button-1" type="button">加载</button>
+	<div id="content-1"></div>
+	<script type="text/javascript">
+		$("#button-1").on("click", function(){
+			var url = "json.txt";
+			/*
+			$.ajax({
+				url: url,
+				//第二种方式，指定dataType为JSON格式
+				dataType: 'json',
+				success: function(data){
+					console.log(data);
+					alert(data.firstName);
+					/*
+					var json = $.parseJSON(data);
+					console.log(json);
+					alert(json.firstName);
+					$("#content-1").html(data);
+					
+				}
+			});
+			*/
+			//第三种方法
+			$.getJSON(url, function(data){
+				console.log(data);
+				alert(data.firstName);
+			});
+		});
+	</script>
+</body>
+</html>

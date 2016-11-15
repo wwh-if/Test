@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Date对象</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="jquery.min.js"></script>
+</head>
+<body>
+	<div class="iclock">
+		<span class="year"></span>年<span class="month"></span>月<span class="date"></span>日 <span class="hour"></span>：<span class="minute"></span>：<span class="second"></span>
+	</div>
+	<script type="text/javascript">
+	function iclock() {
+		var DateObj = new Date();
+		console.log(DateObj);
+		// document.writeln(DateObj);
+		$(".year").text(DateObj.getFullYear());
+		$(".month").text(DateObj.getMonth() + 1);
+		$(".date").text(DateObj.getDate());
+		$(".hour").text(DateObj.getHours());
+		var minute = DateObj.getMinutes();
+		if (minute < 10) {
+			minute = "0" + minute;
+		}
+		$(".minute").text(minute);
+		// $(".minute").text(DateObj.getMinutes().toString.length == 1 ? "0".toString().concat(DateObj.getMinutes()) : DateObj.getMinutes());
+		var second = DateObj.getSeconds();
+		if (second < 10) {
+			second = "0" + second;
+		}
+		$(".second").text(second);
+	}
+	iclock();
+	setInterval(iclock, 1000);
+	</script>
+</body>
+</html>

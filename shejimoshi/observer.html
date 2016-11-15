@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>
+		
+	</title>
+</head>
+<body>
+	<div>
+		<select id="name" name="name">
+			<option value="101">张三</option>
+			<option value="102">李四</option>
+			<option value="103">王五</option>
+		</select>
+	</div>
+	<div>
+		<span>家庭住址：</span><span id="address"></span>
+		
+	</div>
+	<div>
+		<span>电话：</span><span id="tel"></span>
+	</div>
+
+	<script type="text/javascript">
+		var users = {
+			101: ['张三', "郑州市经开区", "13812341234"],
+			102: ['李四', "郑州市中原区", "135109090101"],
+			103: ['王五', "郑州市二七区", "13101210121"]
+		};
+		/*
+		document.getElementById("name").onchange = function() {
+			var uid = this.value;
+			document.getElementById("address").innerHTML = users[uid][1];
+			document.getElementById("tel").innerHTML = users[uid][2];
+		}*/
+		//被观察者
+		var Observed = document.getElementById("name");
+		Observed.items = {};
+
+		Observed.onchange = function() {
+			for (var i in this.items) {
+				var item = this.items[i];
+				item.update(this.value);
+			}
+			// ObserverAddress.update();
+			// ObserverTel.update();
+
+		}
+
+		//给外部的接口。订阅
+		Observed.attach = function(okey, oval) {
+			this.items[okey] = oval;
+		}
+
+		//退订
+		Observed.detach = function(okey) {
+			delete this.items[okey];
+		}
+
+		//观察者1
+		var ObserverAddress = document.getElementById("address");
+		ObserverAddress.update = function(i) {
+			this.innerHTML = users[i][1]
+		}
+		Observed.attach("address", ObserverAddress);
+		//观察者2
+		var ObserverTel = document.getElementById("tel");
+		ObserverTel.update = function(i) {
+			this.innerHTML = users[i][2];
+		}
+		Observed.attach("tel", ObserverTel);
+
+	</script>
+</body>
+</html>

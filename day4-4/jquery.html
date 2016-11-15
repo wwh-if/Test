@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<style>
+		tr:nth-child(2n) {
+			background-color: red;
+		}
+		tr:nth-child(2n+1) {
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+	    <li class='h1' name='a'>list item 1</li>
+	    <li>list item 2</li>
+	    <li>list item 3</li>
+	    <li>list item 4</li>
+	    <li>list item 5</li>
+	    <li></li>
+	</ul>
+	<div>
+		<input name="apple" />
+		<input name="flower" checked="checked" />
+	</div>
+	<div>
+		<table>
+		  <tr><td>Header 1</td></tr>
+		  <tr><td>Value 1</td></tr>
+		  <tr><td>Value 2</td></tr>
+		</table>
+	</div>
+	<div>
+		<h1>Header 1</h1>
+		<p>Contents 1</p>
+		<h2>Header 2</h2>
+		<p>Contents 2</p>
+	</div>
+	<div>
+		<input type="checkbox" name="newsletter" value="Hot Fuzz" />
+		<input type="checkbox" name="newsletter" value="Cold Fusion" />
+		<input type="checkbox" name="accept" value="Evil Plans" />
+	</div>
+	<script type="text/javascript">
+		// console.log($('li:first').html());
+		// console.log($('li:last').html());
+		// console.log($("input:not(:checked)"));
+
+		//渲染随机颜色
+		function renderRandColor() {
+			var liObj = document.getElementsByTagName("li");
+			for (var i = 0; i < liObj.length; i++) {
+				liObj[i].style.backgroundColor = randColor();
+			}
+		}
+		//产生随机颜色 rgb(100, 101, 102, 0.5);
+		function randColor() {
+			var r, g, b, a, rgba;
+			r = parseInt(Math.random() * 256);
+			g = parseInt(Math.random() * 256);
+			b = parseInt(Math.random() * 256);
+			a = Math.random();
+			rgba = "rgba(" + r + ", " + g + ", " + b + ", " + a + ")";
+			return rgba;
+		}
+		// renderRandColor();
+		// setInterval(renderRandColor, 1000);
+	</script>
+</body>
+</html>

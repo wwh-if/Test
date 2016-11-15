@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>视频播放器</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<main>
+		<video id="vid" src="xia.mp4" width="300px" controls loop>
+		</video>
+		<footer>
+			<button id="vid-play" type="button">开始</button>
+			<button id="vid-stop" type="button">结束</button>
+			<button id="vid-next" type="button">下一曲</button>
+			<button id="vid-previous" type="button">上一曲</button>
+			<button id="vid-rate" type="button">播放速度</button>
+			<button id="vid-loop" type="button">循环播放</button>
+
+		</footer>
+	</main>
+	<script type="text/javascript">
+		var plist = [
+			'xia.mp4', 'niutou.mp4', 'liyu.mp4'
+		];
+		var pindex = 0;
+		var videoObj = document.getElementById('vid');
+		console.log(videoObj);
+		//集中处理的播放函数,传入不同的参数，实现不同的控制
+		function togglePlay(args) {
+			//如果要播放
+			//是否静音
+			videoObj.muted = !!args.muted;
+			//播放速度
+			videoObj.playbackRate = (!args.playbackRate) ? 1 : args.playbackRate;
+			//如果参数有上一曲，下一曲，对播放源进行替换
+			if (args.index) {
+				pindex += args.index;
+				if (pindex >= plist.length) {
+					pindex = 0;
+				} else if (pindex < 0) {
+					pindex = plist.length - 1;
+				}
+				videoObj.src = plist[pindex];
+			}
+			if (args.state == 'play') {				
+				videoObj.play();
+			} else if (args.state == 'pause') {				
+				videoObj.pause();
+			} else {
+				videoObj.currentTime = 0;
+				videoObj.pause();
+			}
+		}
+		//开始播放
+		document.getElementById('vid-play').onclick = function() {
+			var innerText = this.innerText;
+			if (videoObj.paused == false) {
+				this.innerText = '暂停';
+				togglePlay({state: 'pause'});
+			} else {
+				this.innerText = '播放';
+				togglePlay({state: 'play'});
+			}
+		}
+		//停止播放
+		document.getElementById('vid-stop').onclick = function() {
+			togglePlay({state: 'stop'});
+		}
+		//下一首
+		document.getElementById('vid-next').onclick = function() {
+			togglePlay({state: 'play', muted: false, playbackRate: 1, index: 1})
+		}
+		//上一首
+		document.getElementById('vid-previous').onclick = function() {
+			togglePlay({state: 'play', muted: false, playbackRate: 1, index: -1})
+		}
+
+	</script>
+</body>
+</html>

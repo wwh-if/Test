@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Prototype</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script type="text/javascript">
+		function Person(name) {
+			this.name = name;
+			this.legs = 4;
+			this.hair = "";
+		}
+		Person.prototype = {
+			eat: function() {
+				console.log('我能吃饭');
+			},
+			sleep: function() {
+				console.log('我能睡觉');
+			},
+			cuthair: function(hair) {
+				this.hair = hair;
+			}
+		}
+		// Person.prototype.eat = function() {
+		// 	console.log('我能吃饭');
+		// }
+		// Person.prototype.sleep = function() {
+		// 	console.log('我能睡觉');
+		// }
+		var zhangsan = new Person('张三');
+		zhangsan.cuthair('平头');
+		console.log(zhangsan);
+		zhangsan.eat();
+		zhangsan.sleep();
+	</script>
+</body>
+</html>

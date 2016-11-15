@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ul</title>
+	<meta charset="utf-8">
+	<style>
+		ul {
+			list-style: decimal;
+			list-style-position: outside;
+			list-style-image: url('http://www.cnblogs.com/skins/SimpleGamboge/images/o_BuGoo_100.png')
+		}
+		ul ul {
+			/*list-style: lower-roman;*/
+			list-style: url('http://www.cnblogs.com/skins/SimpleGamboge/images/o_BuGoo_100.png') outside upper-alpha
+		}
+		ul ul ul {
+			list-style: lower-alpha;
+		}
+		.root {
+			margin-left:70px; 
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<section>
+			<ul class="root">
+				<li>
+					第一章
+					<ul>
+						<li>
+							第一节
+							<ul>
+								<li>第一段</li>
+								<li>第二段</li>
+								<li>第三段</li>
+							</ul>
+						</li>
+						<li>第二节</li>
+						<li>第三节</li>
+					</ul>
+				</li>
+				<li>第二章</li>
+				<li>第三章</li>
+				<li>第四章</li>
+			</ul>
+		</section>
+	</main>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>移动充值</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h1>充值金额必须是大于等于10元，并且是整数，如果不符合，就把input框清空</h1>
+	<form action="post.php" method="post">
+		<p><label>金额：</label><input id="fee" type="text" name="fee"></p>
+		<p><button id="submit-1" type="button">充值</button></p>
+	</form>
+	<script type="text/javascript">
+		//获取button对象，为这个对象绑定了onclick事件
+		document.getElementById('submit-1').onclick = function() {
+			//获取金额
+			var charge = document.getElementById('fee');
+			//alert(charge.value);
+			var fee = charge.value;
+			if (!fee) {
+				alert('请输入充值金额！');
+				charge.value = '';
+				return;
+			}
+			//正则匹配判断金额是否是整数
+			//首字母不能为0，如果为0表示8进制，会引起问题
+			//剩下的每一位只能是0-9的数字，并且末尾也得是数字
+			if (/^[1-9][0-9]+$/.test(fee) === false) {
+				alert('请输入大于等于10的金额');
+				charge.value = '';
+				return;
+			} 
+			if (parseInt(fee) < 10) {
+				alert('请输入大于等于10的金额');
+				charge.value = '';
+				return;
+			}
+			document.getElementsByTagName('form')[0].submit();
+		}
+	</script>
+</body>
+</html>
